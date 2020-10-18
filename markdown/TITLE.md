@@ -1,0 +1,57 @@
+::: rmnote
+
+> [**Pandoc的Divとrmnote**]{.underline}
+>
+> Pandocはコロン`:`3個ずつで囲まれた部分をDivとして扱います(<https://pandoc.org/MANUAL.html#divs-and-spans>)。
+> 任意のclassやattributeを付与することができるので、
+> フィルタのトリガやCSSで色設定をするなどの後処理に使えます。ちなみにこのDivはrmnoteクラスが付与されていて、
+> `removalnote.lua`というLuaフィルタの処理対象です。メタデータの設定によって、すべてのrmnoteクラスDivの出力を
+> 抑圧することができます。`config.yaml`を編集してください。
+>
+> **GitHubその他普通のレンダラでは三連コロンを解釈してくれないので、改行を入れておくことをおすすめします。**
+>
+> ---
+
+:::
+
+::: rmnote
+> [**TOC(目次)挿入**]{.underline}
+>
+> `\toc`を任意の場所に書いておくと、Luaフィルタ`docx-pagebreak-toc.lua`がその場所に目次を生成します。
+> 現在のところ、Docx出力のみが対象です。目次の前は必ず改ページします。目次のあとは改ページしません。
+> `toc-title`メタデータによって目次の見出しを変更できます。`config.yaml`を編集してください。
+
+[](markdown/config.yaml){.listingtable from=18 to=20}
+
+&darr;
+
+:::
+
+\toc
+
+::: rmnote
+
+> `\newpage`を任意の場所に書いておくと、Luaフィルタ`docx-pagebreak-toc.lua`が処理して改ページします。
+> Docx出力とLaTeX出力が対象です。PDF出力のときも動きますが、`--pdf-engine`の設定によってはうまく動かないかもしれません。
+
+&darr;
+
+:::
+
+\newpage
+
+::: rmnote
+
+> [**Pagebreak(改ページ)挿入**]{.underline}
+>
+> レベル1~5の`.unnumbered`クラスが付与された見出しから番号付けを外します。Docx出力が対象です。
+> 予め番号なし見出しスタイルを用意する必要があります。[見出しスタイルの設定によって]{.underline}、
+> 見出しの前で改ページするかどうかの挙動が変わります。
+
+&darr;
+
+:::
+
+# 見出し1 {.unnumbered}
+## 見出し2 {.unnumbered}
+### 見出し3 {.unnumbered}
