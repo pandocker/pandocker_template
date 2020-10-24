@@ -31,6 +31,8 @@
 
 ::: rmnote
 
+> [**Pagebreak(改ページ)挿入**]{.underline}
+>
 > `\newpage`を任意の場所に書いておくと、Luaフィルタ`docx-pagebreak-toc.lua`が処理して改ページします。
 > Docx出力とLaTeX出力が対象です。PDF出力のときも動きますが、`--pdf-engine`の設定によってはうまく動かないかもしれません。
 
@@ -42,7 +44,7 @@
 
 ::: rmnote
 
-> [**Pagebreak(改ページ)挿入**]{.underline}
+> [**番号なし見出し**]{.underline}
 >
 > レベル1~5の`.unnumbered`クラスが付与された見出しから番号付けを外します。Docx出力が対象です。
 > 予め番号なし見出しスタイルを用意する必要があります。[見出しスタイルの設定によって]{.underline}、
@@ -55,3 +57,13 @@
 # 見出し1 {.unnumbered}
 ## 見出し2 {.unnumbered}
 ### 見出し3 {.unnumbered}
+
+::: rmnote
+
+> [**下線**]{.underline}
+>
+> 任意のSpanに`underline`クラスを付与すると下線がつきます。Docx出力とLaTeX出力が対象です。
+>
+> 例：`[**下線**]{.underline}`
+
+:::
