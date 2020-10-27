@@ -1,14 +1,22 @@
-::: rmnote
+::: {.rmnote}
 
+> [**このファイルは何**]{.underline}
+>
+> このファイルはPandockerがデフォルトで参照する原稿Markdownファイル`TITLE.md`のテンプレートです。
+> [**素のPandocでは実現できない機能の説明を含みます。**]{.underline}
+>
+> ------------------------
+>
 > [**Pandoc的Divとrmnote**]{.underline}
 >
-> Pandocはコロン`:`3個ずつで囲まれた部分をDivとして扱います(<https://pandoc.org/MANUAL.html#divs-and-spans>)。
+> Pandocはコロン`:`3個ずつで囲まれた部分をDivとして扱います(fenced divs; <https://pandoc.org/MANUAL.html#divs-and-spans>)。
 > 任意のclassやattributeを付与することができるので、
 > フィルタのトリガやCSSで色設定をするなどの後処理に使えます。ちなみにこのDivはrmnoteクラスが付与されていて、
 > `removalnote.lua`というLuaフィルタの処理対象です。メタデータの設定によって、すべてのrmnoteクラスDivの出力を
 > 抑圧することができます。`config.yaml`を編集してください。
 >
-> **GitHubその他普通のレンダラでは三連コロンを解釈してくれないので、改行を入れておくことをおすすめします。**
+> [**GitHubその他普通のレンダラでは三連コロンを解釈してくれないので、
+> きれいなレンダリングを保つために前後に改行を入れておくことをおすすめします。**]{.underline}
 >
 > ---
 
@@ -54,15 +62,17 @@
 
 :::
 
-# 見出し1 {.unnumbered}
-## 見出し2 {.unnumbered}
-### 見出し3 {.unnumbered}
+# 番号なし見出し1 {.unnumbered}
+## 番号なし見出し2 {.unnumbered}
+### 番号なし見出し3 {.unnumbered}
 
 ::: rmnote
 
 > [**下線**]{.underline}
 >
-> 任意のSpanに`underline`クラスを付与すると下線がつきます。Docx出力とLaTeX出力が対象です。
+> 任意のSpanに`underline`クラスを付与すると下線がつきます。Docx出力に加えLaTeX出力(*)が対象です。
+>
+> (*): LaTeX出力では`tex-underline.lua`が処理します。
 >
 > 例：`[**下線**]{.underline}`
 
