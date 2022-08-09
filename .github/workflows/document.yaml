@@ -3,7 +3,7 @@ on: [push, create]
 jobs:
   make-document:
     name: Compile document
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     container:
       image: k4zuki/pandocker-alpine:2.19
     steps:
