@@ -15,9 +15,10 @@ jobs:
         run: |
           pip3 install pandocker-lua-filters docx-coreprop-writer
           pip3 install git+https://github.com/k4zuki/pandoc_misc.git@2.16.2
-      - name: echo env variables
+      - name: Fix issue with repository ownership
         run: |
-            echo ${{ env.MY_VARIABLE }}
+            echo "${{ github.workspace }}"
+            git config --global --add safe.directory ${{ github.workspace }}
       - name: get short hash
         run: |
             git rev-parse --short HEAD
