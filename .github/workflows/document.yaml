@@ -21,4 +21,4 @@ jobs:
       - name: Upload artifact files (at a push)
         uses: actions/upload-artifact@v3
         with:
-          path: Out/*.{pdf,docx,html}
+          path: Out
