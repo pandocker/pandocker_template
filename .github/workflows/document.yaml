@@ -3,15 +3,12 @@ on: [push, create]
 jobs:
   make-document:
     name: Compile document
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container:
       image: k4zuki/pandocker-alpine:2.19
     steps:
-      - name: git config
-        run: |
-          git config --global --add safe.directory /__w/pandocker_template/pandocker_template
       - name: Checkout
-        uses: actions/checkout@v2.0.0
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - name: Update dependencies
