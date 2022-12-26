@@ -15,9 +15,13 @@ jobs:
         run: |
           pip3 install pandocker-lua-filters docx-coreprop-writer
           pip3 install git+https://github.com/k4zuki/pandoc_misc.git@2.16.2
+      - name: Fix issue with repository ownership
+        run: |
+            git config --global --add safe.directory /home/runner/work/vksm/vksm
+            git config --global --add safe.directory /github/workspace
       - name: get short hash
         run: |
-          git rev-parse --short HEAD
+            git rev-parse --short HEAD
       - name: Build document
         run: |
           make initdir clean html docx pdf
