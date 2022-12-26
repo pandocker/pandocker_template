@@ -10,15 +10,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: ''
       - name: Update dependencies
         run: |
           pip3 install pandocker-lua-filters docx-coreprop-writer
           pip3 install git+https://github.com/k4zuki/pandoc_misc.git@2.16.2
       - name: Build document
         run: |
+          git rev-parse --short HEAD
           make initdir clean html docx pdf
       - name: Upload artifact files (at a push)
         uses: actions/upload-artifact@v3
         with:
-          path: Out
+          path: Out/*.{pdf,docx,html}
