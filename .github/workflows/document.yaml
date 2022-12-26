@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: ''
+          fetch-depth: 0
       - name: Update dependencies
         run: |
           pip3 install pandocker-lua-filters docx-coreprop-writer
