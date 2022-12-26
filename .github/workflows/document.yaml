@@ -19,7 +19,7 @@ jobs:
         run: |
           make initdir clean html docx pdf
       - name: Upload artifact files (at a push)
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
-          name: pdf/html/docx files
-          path: Out/
+          name: "pdf/html/docx files"
+          path: Out
