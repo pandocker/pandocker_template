@@ -17,7 +17,8 @@ jobs:
           pip3 install git+https://github.com/k4zuki/pandoc_misc.git@2.16.2
       - name: get short hash
         run: |
-            git config --global --add safe.directory /__w/${{ github.repository }}/${{ github.repository }}
+            repo=${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}
+            git config --global --add safe.directory /__w/${repo}/${repo}
             git rev-parse --short HEAD
       - name: Build document
         run: |
