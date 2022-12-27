@@ -34,8 +34,9 @@ jobs:
             make initdir html
             cd Out
             ls *.html
-            TARGET=basename `ls` .html
-            qr ${{ env.DOWNLOAD_URL_BASE }}/${{ env.RELEASE_VERSION }}/${TARGET}.pdf > images/QRcode.png
+            TARGET=`ls *.html`
+            echo ${TARGET#.html/}
+            qr ${{ env.DOWNLOAD_URL_BASE }}/${{ env.RELEASE_VERSION }}/${TARGET#.html/}.pdf > images/QRcode.png
       - name: Build document
         run: |
             make html docx pdf
