@@ -30,11 +30,9 @@ jobs:
             make initdir html
             TARGET=`ls Out/*.html`
             TARGET=${TARGET#Out/}
-            echo "TARGET=${TARGET//.html/}" >> $GITHUB_ENV
+            qr ${{ env.DOWNLOAD_URL_BASE }}/${{ env.RELEASE_VERSION }}/${TARGET//.html/}.pdf > images/QRcode.png
       - name: Build document
         run: |
-            TARGET=${{env.TARGET}}
-            qr ${{ env.DOWNLOAD_URL_BASE }}/${{ env.RELEASE_VERSION }}/${TARGET//.html/}.pdf > images/QRcode.png
             make initdir html docx pdf
       - name: Upload artifact files (at a push)
         uses: actions/upload-artifact@v3
