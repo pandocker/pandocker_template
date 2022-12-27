@@ -20,6 +20,13 @@ jobs:
         run: |
           pip3 install pandocker-lua-filters docx-coreprop-writer
           pip3 install git+https://github.com/k4zuki/pandoc_misc.git@2.16.2
+      - name: Prepare QR code for this build
+        run: |
+            pip3 install qrcode
+            URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/download
+            echo ${URL}
+#            qr ${URL}/${BUILD}/GreenPAK-I2C-Expander-HAT-`date +%d-%b-%Y`-${SHORT_HASH}.pdf > images/QRcode.png
+
       - name: Build document
         run: |
           make initdir clean html docx pdf
