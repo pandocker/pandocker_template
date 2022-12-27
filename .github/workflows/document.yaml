@@ -27,8 +27,8 @@ jobs:
         run: |
             echo ${{ env.RELEASE_VERSION }}
             echo ${{ env.DOWNLOAD_URL_BASE }}
-      - name: Prepare QR code for this build
-#        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+      - name: Prepare QR code for this build (at a tag)
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
         run: |
             pip3 install qrcode
             make initdir html

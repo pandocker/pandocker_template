@@ -77,5 +77,7 @@
 > (*): LaTeX出力では`tex-underline.lua`が処理します。
 >
 > 例：`[**下線**]`
+>
+> ![QR](images/QRcode.png)
 
 :::
