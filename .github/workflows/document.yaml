@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          submodules: recursive
       - name: Setup safe directory for git
         run: |
           repo=${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}
@@ -39,7 +40,8 @@ jobs:
         with:
           path: ${{ env.DOC_BASE }}
 
-  Docx-to-PDF:
+  docx2pdf:
+    name: Docx to PDF conversion and release
     runs-on: windows-latest
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
     steps:
@@ -47,6 +49,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          submodules: recursive
       - name: Wait for artifact build
         uses: yogeshlonkar/wait-for-jobs@v0
         with:
@@ -58,8 +61,8 @@ jobs:
       - name: docx2pdf
         run: |
           cd artifact
-          ../docx2pdf.ps1
-      - name: Make a release (at a tag)
+          ../docx2pdf/docx2pdf.ps1
+      - name: Make a release
         uses: softprops/action-gh-release@v2
         with:
           files: |
