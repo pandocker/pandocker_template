@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: echo
         run: |
-          echo ${{DOWNLOAD_URL_BASE}}
+          echo ${{env.DOWNLOAD_URL_BASE}}
       - name: Checkout
         uses: actions/checkout@v4
         with:
