@@ -26,11 +26,11 @@ jobs:
       - name: Prepare QR code for this build (at a tag)
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
         run: |
-          TARGET=`ls ${{env.DOC_BASE}}/Out/*.html`
-          TARGET=${TARGET#${{env.DOC_BASE}}/Out}
           pip3 install qrcode
           make initdir html
-          qr ${{env.DOWNLOAD_URL_BASE}}/${{env.RELEASE_VERSION}}/${TARGET//.html/}.pdf > images/QRcode.png
+          TARGET=`ls ${{env.DOC_BASE}}/Out/*.html`
+          TARGET=${TARGET#${{env.DOC_BASE}}/Out}
+          qr ${{env.DOWNLOAD_URL_BASE}}/${{env.RELEASE_VERSION}}/${TARGET//.html/}.pdf > ${{env.DOC_BASE}}/images/QRcode.png
       - name: Build document
         run: |
           make initdir html docx
