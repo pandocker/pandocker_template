@@ -25,7 +25,7 @@ jobs:
           pip3 install git+https://github.com/k4zuki/pandoc_misc.git@2.16.2
       - name: Prepare QR code for this build (at a tag)
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
-        env: |
+        env:
           TARGET: `ls ${DOC_BASE}/*.html`
         run: |
           TARGET=${TARGET#${DOC_BASE}/}
