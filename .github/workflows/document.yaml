@@ -31,6 +31,7 @@ jobs:
           make initdir html
           TARGET=`ls ${{env.DOC_BASE}}/Out/*.html`
           TARGET=${TARGET#${{env.DOC_BASE}}/Out}
+          echo ${{env.DOWNLOAD_URL_BASE}}/${{env.RELEASE_VERSION}}/${TARGET//.html/}.pdf 
           qr ${{env.DOWNLOAD_URL_BASE}}/${{env.RELEASE_VERSION}}/${TARGET//.html/}.pdf > ${{env.DOC_BASE}}/images/QRcode.png
       - name: Build document
         run: |
@@ -38,7 +39,7 @@ jobs:
       - name: Upload artifact files (at a push)
         uses: actions/upload-artifact@v3
         with:
-          path: ${{ env.DOC_BASE }}/Out
+          path: ${{env.DOC_BASE}}/Out
 
   docx2pdf:
     name: Docx to PDF conversion and release
@@ -50,6 +51,8 @@ jobs:
         with:
           fetch-depth: 0
           submodules: recursive
+      - name: Install Office
+        run: choco install office365business # This takes about 5min
       - name: Wait for artifact build
         uses: yogeshlonkar/wait-for-jobs@v0
         with:
@@ -58,8 +61,6 @@ jobs:
         uses: actions/download-artifact@v3
       - name: ls
         run: ls -R
-      - name: Install Office
-        run: choco install office365business # This takes about 5min
       - name: docx2pdf
         run: |
           cd artifact
