@@ -10,9 +10,6 @@ jobs:
     container:
       image: k4zuki/pandocker-alpine:2.19-core
     steps:
-      - name: echo
-        run: |
-          echo ${{env.DOWNLOAD_URL_BASE}}
       - name: Checkout
         uses: actions/checkout@v4
         with:
