@@ -35,7 +35,7 @@ jobs:
         run: |
           make initdir html docx
       - name: Upload artifact files (at a push)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{env.DOC_BASE}}/Out
 
