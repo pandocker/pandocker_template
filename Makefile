@@ -20,5 +20,6 @@ PROJECT= `pwd`
 #TARGET := TARGET-$(DATE)-$(HASH)
 #REVERSE_INPUT := reverse-input.docx
 #REFERENCE := $(MISC)/ref.docx
+HTML_TEMPLATE := ./easy-pandoc-templates/html/easy_template.html
 ##
 include $(MISC_SYS)/Makefile
